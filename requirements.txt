@@ -1,0 +1,8 @@
+streamlit
+langchain
+langchain-google-genai
+langchain-community
+faiss-cpu
+python-dotenv
+# Nếu bạn sử dụng sentence-transformers, hãy thêm dòng sau:
+# sentence-transformers
