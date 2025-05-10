@@ -100,7 +100,7 @@ CyberBuddy trả lời chi tiết và thân thiện:"""
 
 # --- Giao diện Streamlit (Cập nhật thông điệp cho thân thiện hơn) ---
 st.set_page_config(page_title="CyberQuest Companion", layout="wide")
-st.title("🎮 CyberQuest Companion Bot 🤖")
+st.title("🎮 CyberQuest AI Mentor 🤖")
 st.markdown("Mình là CyberBuddy, người bạn đồng hành của bạn trong CyberQuest! Hãy hỏi mình bất cứ điều gì về các màn chơi, nhiệm vụ, hoặc nếu bạn gặp khó khăn nhé.")
 
 load_dotenv()
