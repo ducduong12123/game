@@ -11,28 +11,15 @@ import tempfile
 
 # Hàm để xử lý logic RAG với Langchain
 
-# Giả sử đây là một phần của backend API của bạn
-FIXED_GAME_CONTENT_FILE = "[CYEBERQUEST] KHUNG NỘI DUNG - Nội dung trò chơi (1).txt"
+def process_query_with_langchain(api_key, file_path, query):
+    os.environ["GOOGLE_API_KEY"] = api_key
 
-def process_player_query(api_key, player_question):
-    # os.environ["GOOGLE_API_KEY"] = api_key # API key có thể được set một lần khi backend khởi động
-
-    # Đường dẫn file giờ đây là cố định
-    file_path = FIXED_GAME_CONTENT_FILE
-
-    # 1. Load dữ liệu từ file cố định
+    # 1. Load dữ liệu từ file
     loader = TextLoader(file_path, encoding='utf-8')
     documents = loader.load()
-    # ... (phần còn lại của logic RAG giống hệt như trong code Streamlit)
-    # ... text_splitter, embeddings, vector_store, retriever, llm, prompt, qa_chain ...
+    if not documents:
+        return "Xin lỗi, mình chưa có thông tin từ file game. Bạn tải file lên chưa?"
 
-    try:
-        result = qa_chain.invoke({"query": player_question})
-        # ... (xử lý kết quả như trước) ...
-        return result['result']
-    except Exception as e:
-        # Log lỗi và trả về thông báo phù hợp
-        return "CyberBuddy đang gặp chút trục trặc, bạn thử lại sau nhé!"
     # 2. Split văn bản thành các chunks
     # Tăng chunk_size và chunk_overlap để mỗi chunk có nhiều ngữ cảnh hơn,
     # giúp LLM hiểu rõ hơn về mối liên hệ giữa mô tả năng lực, nhiệm vụ, khó khăn và mẹo.
